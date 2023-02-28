@@ -21,13 +21,15 @@ Please let us know if you have questions, suggestions, or trouble using the plat
 - [NorESMhub/noresm-lsp-data](https://github.com/NorESMhub/noresm-lsp-data)
 - [NorESMhub/ctsm-api](https://github.com/NorESMhub/ctsm-api)
 - [NorESMhub/NorESM](https://github.com/NorESMhub/NorESM)
-- ([NorESMhub/noresm-lsp-input](https://github.com/NorESMhub/noresm-lsp-input) for legacy mathod of creating input data for integrated sites)
+- ([NorESMhub/noresm-lsp-input](https://github.com/NorESMhub/noresm-lsp-input) for legacy method of creating input data for integrated sites)
 
 The main code is stored in the [NorESMhub/noresm-land-sites-platform](https://github.com/NorESMhub/noresm-land-sites-platform) repository. The `main` branch stores the latest functioning version. Older versions can be accessed under [Releases](https://github.com/NorESMhub/noresm-land-sites-platform/releases). This documentation page is made with GitHub pages (`gh-pages` branch) and [Mkdocs](https://www.mkdocs.org/). To contribute to the code or documentation, see our [Contributing](https://noresmhub.github.io/noresm-land-sites-platform/contributing/) instructions. There you will also find our [Code of Conduct](https://noresmhub.github.io/noresm-land-sites-platform/contributing/#code-of-conduct).
 
 ### Documentation of the model framework
 
-The model framework consists of the Norwegian Earth System Model (NorESM), the Community Land Model (CLM), and the Functionally Assembled Terrestrial Ecosystem Simulator (FATES). Each model has its own documentation and tutorials. See our [page with links to external tutorials and resources for some recommendations on where to start](https://noresmhub.github.io/noresm-land-sites-platform/resources). Here are the central documentation pages and repositories for the respective models:
+The model framework consists of the Norwegian Earth System Model (NorESM), the Community Land Model (CLM), and the Functionally Assembled Terrestrial Ecosystem Simulator (FATES). While the LSP version 1 only runs CLM-FATES, an earth system model (the NorESM) is necessary as software infrastructure. Notably, the coupler ([CIME](https://esmci.github.io/cime/versions/master/html/index.html)) contains a model driver and the infrastructure needed to create and control cases (see [glossary](https://noresmhub.github.io/noresm-land-sites-platform/documentation/#glossary-of-technical-terms)). An alternative to using NorESM could be [CESM](https://www.cesm.ucar.edu/), which uses the same coupler and CLM as its land component.
+
+Each model has its own documentation and tutorials. See our [page with links to external tutorials and resources for some recommendations on where to start learning more](https://noresmhub.github.io/noresm-land-sites-platform/resources). Here are the central documentation pages and repositories for the respective models:
 
 #### FATES
 
@@ -53,7 +55,7 @@ The model framework consists of the Norwegian Earth System Model (NorESM), the C
 | API = Application Programming Interface | An interface for computer programs to communicate with each other. It offers a service to other pieces of software. An API specification is a document or standard that describes how to build or use such a connection or interface. A computer system that meets this standard is said to implement or expose an API. The term API may refer either to the specification or to the implementation. [[Wikipedia]](https://en.wikipedia.org/wiki/API)|
 |Container, </br>Container image, </br>Docker | Containers are isolated, virtualized computer environments based on an image, a read-only file with source code, libraries, dependencies, and tools. Docker Inc. provides containers for free personal and educational use. See the [Docker webpage](https://www.docker.com/resources/what-container/) and e.g. the [CLASSIC model's containerisation description](https://doi.org/10.5194/gmd-13-2825-2020)|
 |Git, </br>GitHub, </br>repository | Git software enables version control by tracking changes in files. GitHub is an online host of repositories, i.e. data structures of files and their version history.|
-|Graphical User Interface (GUI) | An interface between humans and software or hardware, with clickable icons. The NorESM-LSP GUI is accessed after installation and setup at localhost:8080 in a browser, and lets users set up and run model experiments (simulations).|
+| GUI = Graphical User Interface | An interface between humans and software or hardware, with clickable icons. The NorESM-LSP GUI is accessed after installation and setup at localhost:8080 in a browser, and lets users set up and run model experiments (simulations).|
 |Terminal | A computer program where users interact with an operating system by typing in commands (as opposed to clicking and seeing programs in windows). Examples are Windows PowerShell and puTTy. [[Wikipedia]](https://en.wikipedia.org/wiki/Terminal_emulator)|
 
 #### Earth System Modelling terms
@@ -132,11 +134,11 @@ Input data is created using NCAR's `subset_data` [script to subset atmospheric f
 
 The versioned input data are [in a shared folder on sigma2.no](https://ns2806k.webs.sigma2.no/EMERALD/EMERALD_platform/inputdata_noresm_landsites/). The .tar files are compressed and can be opened as a folder with e.g. 7-zip by right-clicking and choosing 'open archive', and used after extracting (unzipping). The data files are stored in [.nc (NetCDF)](https://www.unidata.ucar.edu/software/netcdf/) format, which can be viewed using [Panoply](https://www.giss.nasa.gov/tools/panoply/), or packages in Python or [R](https://cran.r-project.org/web/packages/ncdf4/index.html). The output data from simulations are stored in the same format but in the specific case folder.
 
-- **Legacy version**: An alternative, more manual way of creating input data is documented in the [NorESMhub/noresm-lsp-input](https://github.com/NorESMhub/noresm-lsp-input) repository. This method is similar to the subset_data method, i.e. there is a config file with the names of the datasets you want to subset, but instead of calling python scripts using xarray functionalities to subset the nearest neighbor of the grid cell values for domain/atm. forcing, this method relies on additional dependencies (perl etc.) and mapping/grid files, and requires access to large amounts of storage to create the necessary input data. This is because the global data files are very large and must be stored somewhere accessible while we subset from them. The scripts in the input repository are therefore run on e.g. Saga or another supercomputer. To use the legacy version, use the `legacy` branch of the noresm-land-sites-platform repository and make an .env file in the project folder where you add these two lines: 
+- **Legacy version**: An alternative, more manual way of creating input data is documented in the [NorESMhub/noresm-lsp-input](https://github.com/NorESMhub/noresm-lsp-input) repository. This method is similar to the subset_data method, i.e. there is a config file with the names of the datasets you want to subset. The difference is that instead of calling python scripts using xarray functionalities to subset the nearest neighbor of the grid cell values for domain/atm. forcing, this method relies on additional dependencies (perl etc.) and mapping/grid files, and requires access to large amounts of storage to create the necessary input data. This is because the global data files are very large and must be stored somewhere accessible while we subset from them. The scripts in the input repository are therefore run on e.g. Saga or another supercomputer. To use the legacy version, use the [legacy release and tag of the noresm-land-sites-platform repository](https://github.com/NorESMhub/noresm-land-sites-platform/releases/tag/v0.2.0) by making an .env file in the project folder where you add these lines to get the corresponding versions of the LSP and API: 
 
 ```
+PLATFORM_VERSION=v0.2.0
 API_VERSION=legacy
-PLATFORM_VERSION=legacy
 ```
 
 ### Component sets (compsets)
@@ -206,9 +208,11 @@ For the integrated field sites, surface data have been created from raw data set
 
 ## Running model experiments
 
+The model's original user interface is through a terminal emulator where users enter commands to use the model. The LSP adds a GUI and API to simplify this interface.
+
 ### Graphical User Interface
 
-Users can set up cases, change some model settings, and run simulations via the Web User Interface. Once the platform is correctly up and running, the UI will be available at [localhost:8080](localhost:8080). The web UI is an application that represents some configurable parameters of the model in a user-friendly way. It comes with built-in validations and error handling for the acceptable values of the parameters. Its goal is to streamline the process of editing a case and help users focus on the scientific aspects of their simulations rather than on the technical configuration.
+Users can set up cases, change some model settings, and run simulations via the Web Graphical User Interface. Once the platform is correctly up and running, the UI will be available at [localhost:8080](localhost:8080). The web UI is an application that represents some configurable parameters of the model in a user-friendly way. It comes with built-in validations and error handling for the acceptable values of the parameters. Its goal is to streamline the process of editing a case and help users focus on the scientific aspects of their simulations rather than on the technical configuration. The information entered in the GUI is sent to the API, which then creates and executes scripts that call on the corresponding model functionalities via the model’s original interfaces.
 
 The Web User Interface (UI) code can be found at [https://github.com/NorESMhub/noresm-lsp-ui](https://github.com/NorESMhub/noresm-lsp-ui). The UI is created using [Typescript](https://www.typescriptlang.org/), a superset of JavaScript language, with the [React](https://reactjs.org/) framework.
 
@@ -224,6 +228,18 @@ The Platform API is responsible for:
 - Defining the machine config, i.e., the Docker container, for the model (see `resources/dotcime`).
 - Creating, configuring, and running cases.
 - Serving inputs and outputs of the created cases.
+
+**Table: Overview of important API POST requests summarizing the main actions they perform and the processes they trigger in the [model code](https://escomp.github.io/CESM/release-cesm2/quickstart.html#).**
+
+| API request | Summary | Specific actions (model tool, if applicable) | Examples and links to external resources\* |
+| ------------- | -----------------------------------------------  | --------------------------------------- | --- |
+| Create case | Create a new case with the given parameters | a) Create case (`./create_newcase`) <br><br>b) Case setup (`./case.setup`) <br><br>c) Configure parameters (`./xmlchange` and edit CLM [namelist files](https://escomp.github.io/ctsm-docs/versions/master/html/users_guide/setting-up-and-running-a-case/customizing-the-clm-configuration.html?highlight=namelist#user-namelist)) <br><br>d) Use the case's `user_mods` directory to configure site options and link input data | a) `./create_newcase --case [case_name] --compset <2000_DATM%GSWP3v1_CLM51%FATES_SICE_SOCN_MOSART_SGLC_SWAV> --driver <nuopc> --res <CLM_USRDAT> --machine <docker> --run-unsupported --handle-preexisting-dirs --user-mods-dirs <path_to_user_mods_dir>` <br><br>b) - <br><br>c) `./xmlchange [parameter_name]=[value]` <br>Append `[parameter_name]=[value]` to CLM namelist file. <br><br>d) - |
+| Create site case | Same as `Create case`, but for the integrated field sites | In addition: download site input data from online storage (optional) | https://github.com/NorESMhub/noresm-lsp-data |
+| Run case     | Download global input data and run a model simulation with the desired model configuration | a) Build the case (`./case.build`) <br><br>b) If required, download CLM global input data (`./check_input_data`) <br><br>c) Define FATES PFTs to include (`./FatesPFTIndexSwapper.py`; optional) <br><br>d) Change FATES parameters for included PFTs (`./modify_fates_paramfile.py`; optional) <br><br>e) Submit the case (`./case.submit`) | a) - <br><br>b) `./check_input_data --download` <br><br>c) `./FatesPFTIndexSwapper.py --pft-indices [1,2,3,4] --fin <fates_param_file_path> --fout <new_temp_param_file_path>` <br><br>d) `./modify_fates_paramfile.py --fin <fates_param_file_path> --fout <fates_param_file_path> --O --pft [1,2,3,4] --var [parameter_name] --value [parameter_value]` <br><br>e) - |
+
+\*`[]` denote user-specified input examples, `<>` denote adjustable model settings that are currently defined as constants in the default LSP configuration or automatically generated by the API. Full paths for tools omitted for readability.
+
+When the containers are up and running, the API can be accessed directly at [http://localhost:8000/api/v1/docs](http://localhost:8000/api/v1/docs). 
 
 The API code can be found at [https://github.com/NorESMhub/ctsm-api](https://github.com/NorESMhub/ctsm-api).
 
@@ -321,6 +337,8 @@ Galaxy is free to use and only requires registering as a user. Note that this to
 #### SSH tunneling, with example for NREC
 
 These instructions are for installing and using the NoESM-LSP on a remote machine. The remote machine must allow remote access via SSH. If you want to run the NorESM-LSP on a server without SSH capability, you will need to talk to your local IT department to find a different solution. We describe all required steps from scratch and not all steps might be necessary for all virtual/remote machines (e.g. Docker may already be installed). The instructions are tailored for and tested on [NREC](https://www.nrec.no/) (remote) and Windows with Ubuntu subsystem (local) and might need adaptations on other systems. On NREC, we use a new instance based on the `GOLD Ubuntu 22.04 LTS` base image. The commands to install programs etc. may differ for other distributions and operating systems.
+
+> For Norwegian/University of Oslo users: if you're wondering how to set up a virtual machine on NREC, check out the [archived instructions here](https://github.com/NorESMhub/noresm-land-sites-platform/tree/archive/.machine/NREC_VM_setup), and the [Norwegian Research and Education Cloud (NREC) documentation](https://docs.nrec.no/). 
 
 ##### 1. Run the platform remotely
 
