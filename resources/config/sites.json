@@ -15,7 +15,7 @@
         "long_name": "Ulvehaugen",
         "description": "Alpine vegetation at 1208 m elevation. Mean summer temperature is 7 degrees C, and mean annual precipitation is 1226 mm.",
         "compset": "2000_DATM%GSWP3v1_CLM51%FATES_SICE_SOCN_MOSART_SGLC_SWAV",
-        "data_url": "https://raw.githubusercontent.com/NorESMhub/noresm-lsp-data/main/sites/ALP1.zip"
+        "data_url": "https://raw.githubusercontent.com/evalieungh/FATES_INCLINE/main/data/ALP1.zip"
       }
     },
     {
@@ -32,7 +32,7 @@
         "long_name": "Laavisdalen",
         "description": "Alpine vegetation at 1097 m elevation. Mean summer temperature is 7 degrees C, and mean annual precipitation is 1561 mm.",
         "compset": "2000_DATM%GSWP3v1_CLM51%FATES_SICE_SOCN_MOSART_SGLC_SWAV",
-        "data_url": "https://raw.githubusercontent.com/NorESMhub/noresm-lsp-data/main/sites/ALP2.zip"
+        "data_url": "https://raw.githubusercontent.com/evalieungh/FATES_INCLINE/main/data/ALP2.zip"
       }
     },
     {
@@ -50,7 +50,7 @@
         "description": "Alpine vegetation at 1213 m elevation. Mean summer temperature is 6.5 degrees C, and mean annual precipitation is 2130 mm.",
         "compset": "2000_DATM%GSWP3v1_CLM51%FATES_SICE_SOCN_MOSART_SGLC_SWAV",
         "res": "1x1_ALP3",
-        "data_url": "https://raw.githubusercontent.com/NorESMhub/noresm-lsp-data/main/sites/ALP3.zip"
+        "data_url": "https://raw.githubusercontent.com/evalieungh/FATES_INCLINE/main/data/ALP3.zip"
       }
     },
     {
@@ -68,7 +68,7 @@
         "description": "Alpine vegetation at 1088 m elevation. Mean summer temperature is 7 degrees C, and mean annual precipitation is 3402 mm.",
         "compset": "2000_DATM%GSWP3v1_CLM51%FATES_SICE_SOCN_MOSART_SGLC_SWAV",
         "res": "1x1_ALP4",
-        "data_url": "https://raw.githubusercontent.com/NorESMhub/noresm-lsp-data/main/sites/ALP4.zip"
+        "data_url": "https://raw.githubusercontent.com/evalieungh/FATES_INCLINE/main/data/ALP4.zip"
       }
     },
     {
