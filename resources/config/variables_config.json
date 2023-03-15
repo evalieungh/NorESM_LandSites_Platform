@@ -34,7 +34,6 @@
         }
       ]
     },
-    "readonly": true,
     "default": "NO_LEAP",
     "placeholder": "No Leap"
   },
