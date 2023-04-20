@@ -8,6 +8,16 @@
     "hidden": true
   },
   {
+    "name": "VCGSITE",
+    "category": "xml_var",
+    "type": "char",
+    "description": {
+      "summary": "Name of the site. Should be identical to the site name you selected. Capital letters."
+    },
+    "default": "ALP1",
+    "placeholder": "ALP1"
+  },
+  {
     "name": "DIN_LOC_ROOT_CLMFORC",
     "category": "xml_var",
     "type": "char",
